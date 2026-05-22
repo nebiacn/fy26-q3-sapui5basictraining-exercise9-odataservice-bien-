@@ -1,6 +1,74 @@
-<mvc:View controllerName="sapips.training.odata.controller.Main"
+<mvc:View
+    controllerName="sapips.training.odata.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <Table
+            id="idTabMain"
+            items="{
+			path: '/Products',
+			sorter: {
+				path: 'ProductName'
+			}
+		}"
+        >
+            <columns>
+                <Column
+                    id="idColProduct"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text
+                        id="idColTxtProduct"
+                        text="{i18n>coltxtproduct}"
+                    />
+                </Column>
+                <Column
+                    id="idColSupplierID"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text
+                        id="idColTxtSupplierID"
+                        text="{i18n>coltxtsupplierid}"
+                    />
+                </Column>
+                <Column
+                    id="idColPrice"
+                    minScreenWidth="Tablet"
+                    demandPopin="true"
+                >
+                    <Text
+                        id="idColTxtPrice"
+                        text="{i18n>coltxtprice}"
+                    />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem id="idColListItm">
+                    <cells>
+                        <ObjectIdentifier
+                            id="idObjIdentProduct"
+                            title="{ProductName}"
+                            text="{ parts: [ { path: 'i18n>productid'},
+                         { path: 'ProductID'} ] }"
+                        />
+                        <Text
+                            id="idColItemSupplierID"
+                            text="{SupplierID}"
+                        />
+                        <ObjectIdentifier
+                            id="idObjIdentPrice"
+                            title="{UnitPrice}"
+                            text="{QuantityPerUnit}"
+                        />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
     </Page>
 </mvc:View>
